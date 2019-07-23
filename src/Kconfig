@@ -1,0 +1,11 @@
+#
+# Realtek device configuration
+#
+
+config R8168
+    tristate "Realtek 8168"
+    depends on PCI
+    select CRC32
+    select FW_LOADER
+    select NET_CORE
+    select MII

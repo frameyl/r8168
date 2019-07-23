@@ -31,13 +31,13 @@
 
 ENABLE_REALWOW_SUPPORT = n
 ENABLE_DASH_SUPPORT = n
-CONFIG_DOWN_SPEED_100 = n
-CONFIG_ASPM = y
+#CONFIG_DOWN_SPEED_100 = n
+#CONFIG_ASPM = y
 ENABLE_S5WOL = y
 ENABLE_EEE = n
 
 ifneq ($(KERNELRELEASE),)
-	obj-m := r8168.o
+	obj-$(CONFIG_R8168) := r8168.o
 	r8168-objs := r8168_n.o r8168_asf.o rtl_eeprom.o rtltool.o
 	ifeq ($(ENABLE_REALWOW_SUPPORT), y)
 	    r8168-objs += r8168_realwow.o
