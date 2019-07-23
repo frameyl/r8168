@@ -22594,6 +22594,12 @@ rtl8168_init_one(struct pci_dev *pdev,
                 return rc;
         }
 
+        netif_info(tp, probe, dev, "%s at 0x%p, %pM, XID %08x IRQ %d\n",
+               rtl_chip_info[tp->chipset].name, ioaddr, dev->dev_addr,
+               (u32)(RTL_R32(TxConfig) & 0x9cf0f8ff), pdev->irq);
+        netif_info(tp, probe, dev, "jumbo features [frames: %d bytes]\n",
+               rtl_chip_info[tp->chipset].jumbo_frame_sz);
+
         printk(KERN_INFO "%s: This product is covered by one or more of the following patents: US6,570,884, US6,115,776, and US6,327,625.\n", MODULENAME);
 
         netif_carrier_off(dev);
